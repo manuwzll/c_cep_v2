@@ -1,0 +1,279 @@
+/* Reset básico de margens e fontes */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', 'Quicksand', sans-serif; /* Fonte mais delicada e arredondada */
+}
+
+body {
+    background: linear-gradient(135deg, #2b2533 0%, #3f3347 50%, #29242d 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Efeito de brilho de fundo estético (luzes suaves) */
+body::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(240, 151, 213, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+    top: -100px;
+    left: -100px;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(221, 160, 221, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+    bottom: -150px;
+    right: -150px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Cartão central */
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(240, 151, 213, 0.25), 0 0 20px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(240, 151, 213, 0.3);
+    max-width: 550px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: 0 15px 40px rgba(240, 151, 213, 0.4), 0 0 25px rgba(240, 151, 213, 0.2);
+}
+
+.subtitulo {
+    color: #6c5b7b;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+/* Formulário de Busca */
+.busca-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;                    
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: left;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #f3d1ec;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    background-color: #fff9fc;
+    color: #4a404f;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus, select:focus {
+    border-color: #f097d5;
+    background-color: #ffffff;
+    box-shadow: 0 0 12px rgba(240, 151, 213, 0.4);
+    transform: translateY(-1px);
+}
+
+button {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #fdd2fd 0%, #f097d5 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+    box-shadow: 0 4px 15px rgba(240, 151, 213, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho ao passar o mouse no botão */
+button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: rotate(45deg) translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+button:hover::after {
+    transform: rotate(45deg) translateX(100%);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #f5bcfa 0%, #e491cb 100%);
+    box-shadow: 0 6px 20px rgba(240, 151, 213, 0.6), 0 0 10px rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Mensagens e Erros */
+.mensagem {
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    margin: 10px 0px;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.4s ease;
+}
+
+.erro {
+    background-color: rgba(253, 232, 232, 0.9);
+    color: #b56b82;
+    border: 1px solid #f5c6cb;
+    box-shadow: 0 0 10px rgba(245, 198, 203, 0.3);
+}
+
+.info {
+    background-color: rgba(232, 244, 253, 0.9);
+    color: #9370db;
+    border: 1px solid #ebbee7;
+    box-shadow: 0 0 10px rgba(235, 190, 231, 0.3);
+}
+
+/* Resultado */
+.resultado h3 {
+    color: #5c4b63;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.resultado {
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px solid #f3b4e4;
+    margin: 10px 0px;
+    background: rgba(255, 250, 253, 0.7);
+    box-shadow: 0 5px 15px rgba(243, 180, 228, 0.15);
+}
+
+.lista-resultados {
+    max-height: 400px; 
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 5px;
+}
+
+/* Scrollbar fofinha e delicada */
+.lista-resultados::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lista-resultados::-webkit-scrollbar-track {
+    background: #fdf0f8;
+    border-radius: 10px;
+}
+
+.lista-resultados::-webkit-scrollbar-thumb {
+    background: #f5b4e4;
+    border-radius: 10px;
+}
+
+.lista-resultados::-webkit-scrollbar-thumb:hover {
+    background: #e491cb;
+}
+
+/* cartão de cada endereço */
+.item-endereco {
+    background-color: #ffffff;
+    border: 2px solid #f3d1ec;
+    border-radius: 12px;
+    padding: 14px;
+    text-align: left;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.item-endereco:hover {
+    border-color: #f097d5;
+    box-shadow: 0 5px 15px rgba(240, 151, 213, 0.25);
+    transform: translateY(-2px);
+    background-color: #fff9fc;
+}
+
+.item-endereco p {
+    margin-bottom: 6px;
+    font-size: 0.92rem;
+    color: #554859;
+}
+
+.item-endereco p:last-child {
+    margin-bottom: 0;
+}
+
+.item-endereco .destaque-cep {
+    color: #d17abf;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    text-shadow: 0 0 8px rgba(240, 151, 213, 0.3);
+}
+
+/* Classe utilitária para esconder elementos */
+.oculto {
+    display: none;
+}
+
+footer {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #b5a6be;
+}
+
+footer a {
+    text-decoration: none;
+    color: #e491cb;
+    font-weight: 500;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: #f097d5;
+    text-shadow: 0 0 8px rgba(240, 151, 213, 0.5);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
